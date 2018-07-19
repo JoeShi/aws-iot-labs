@@ -1,0 +1,390 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>IoT Core实验1 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="lab2.IoTCore.2.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="lab1.IoTCore.1.html">
+            
+                <a href="lab1.IoTCore.1.html">
+            
+                    
+                    IoT Core实验1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="lab2.IoTCore.2.html">
+            
+                <a href="lab2.IoTCore.2.html">
+            
+                    
+                    IoT Core实验2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="lab3.greengrass.html">
+            
+                <a href="lab3.greengrass.html">
+            
+                    
+                    IoT Greengrass实验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="lab4.Alexa.html">
+            
+                <a href="lab4.Alexa.html">
+            
+                    
+                    Alexa与AWS IoT的集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >IoT Core实验1</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x63D0;&#x6761;&#x4EF6;&#xFF1A;">&#x524D;&#x63D0;&#x6761;&#x4EF6;&#xFF1A;</h1>
+<p>&#x4F7F;&#x7528;&#x5177;&#x6709;IOT&#x670D;&#x52A1;&#x6743;&#x9650;&#x7684;&#x7528;&#x6237;&#x767B;&#x9646;</p>
+<h2 id="&#x5B9E;&#x9A8C;&#x8BF4;&#x660E;">&#x5B9E;&#x9A8C;&#x8BF4;&#x660E;</h2>
+<ul>
+<li><p>&#x5B9E;&#x9A8C;&#x76EE;&#x7684;&#xFF1A;&#x719F;&#x6089;&#x4F7F;&#x7528;IoT Core&#x7EC4;&#x4EF6;&#xFF0C;&#x8BBE;&#x5907;&#x63A5;&#x5165;&#xFF0C;&#x6D88;&#x606F;&#x5206;&#x53D1;&#xFF0C;&#x8BBE;&#x5907;&#x8BA4;&#x8BC1;</p>
+</li>
+<li><p>&#x6D89;&#x53CA;AWS&#x7EC4;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>Device Gateway, Message Broker</li>
+<li>Device Certificate, IoT Policy</li>
+<li>AWS IoT Test Tool</li>
+</ul>
+</li>
+<li><p>&#x5B9E;&#x9A8C;&#x6D41;&#x7A0B;</p>
+<ul>
+<li>&#x6CE8;&#x518C;IoT&#x8BBE;&#x5907;&#x5230;AWS IoT&#x670D;&#x52A1;&#x4E0A;&#x5E76;&#x4E0B;&#x53D1;&#x76F8;&#x5173;&#x8BC1;&#x4E66;</li>
+<li>&#x542F;&#x52A8;IoT&#x8BBE;&#x5907;&#x7AEF;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#xFF0C;&#x6D4B;&#x8BD5;&#x6D88;&#x606F;&#x7684;&#x63A8;&#x9001;&#x548C;&#x63A5;&#x6536;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x4E00;&#x8FDB;&#x5165;iot&#x670D;&#x52A1;">&#x4E00;.&#x8FDB;&#x5165;IOT&#x670D;&#x52A1;</h2>
+<p>&#x8FDB;&#x5165;IOT Core service &#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;
+<img src="assets/lab1/pic1.jpg" alt="image"></p>
+<h2 id="&#x4E8C;&#x521B;&#x5EFA;iot&#x4E2D;&#x4E2A;&#x7684;&#x7269;&#xFF08;thing&#xFF09;">&#x4E8C;.&#x521B;&#x5EFA;IOT&#x4E2D;&#x4E2A;&#x7684;&#x7269;&#xFF08;thing&#xFF09;</h2>
+<h4 id="1&#x521B;&#x5EFA;&#x7269;">1.&#x521B;&#x5EFA;&#x7269;</h4>
+<p>&#x8FDB;&#x5165;IOT &#x670D;&#x52A1;&#x540E;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;&#x5217;&#x8868;Manage-&gt;Things,&#x8FDB;&#x5165;&#x4E0B;&#x8FF0;&#x754C;&#x9762;. &#x70B9;&#x51FB;Register thing
+<img src="assets/lab1/pic2-1.jpg" alt="image"></p>
+<p>&#x6B64;&#x754C;&#x9762;&#xFF0C;&#x5B9E;&#x9645;&#x73AF;&#x5883;&#x4E0B;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x9009;&#x62E9;&#x6CE8;&#x518C;&#x591A;&#x4E2A;&#x4E8B;&#x7269;&#xFF0C;&#x6B64;&#x5904;&#x4E3A;&#x4E86;&#x6F14;&#x793A;&#xFF0C;&#x6211;&#x4EEC;&#x9009;&#x62E9;create a single thing.
+<img src="assets/lab1/pic2-2.jpg" alt="image"></p>
+<p>&#x8FDB;&#x5165;&#x5982;&#x4E0B;&#x5217;&#x8868;&#x540E;, &#x8F93;&#x5165;&#x5BF9;&#x4E8E;&#x672C;&#x5730;&#x8BBE;&#x5907;&#x7684;&#x547D;&#x540D;, &#x6BD4;&#x5982;light, &#x5176;&#x4ED6;&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;&#x70B9;&#x51FB;&#x4E0B;&#x4E00;&#x6B65;.</p>
+<h4 id="2&#x751F;&#x6210;&#x8BC1;&#x4E66;">2.&#x751F;&#x6210;&#x8BC1;&#x4E66;</h4>
+<p>&#x6B64;&#x9875;&#x9762;&#x70B9;&#x51FB;create certificate
+<img src="assets/lab1/pic2-3.jpg" alt="image"></p>
+<p>&#x5F97;&#x5230;&#x5982;&#x4E0B;&#x8BC1;&#x4E66;, &#x5206;&#x522B;&#x4E0B;&#x8F7D;3&#x4E2A;&#x8BC1;&#x4E66;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x4EE5;&#x53CA;&#x6839;&#x8BC1;&#x4E66;&#xFF0C;&#x51C6;&#x5907;&#x4E4B;&#x540E;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x6811;&#x8393;&#x6D3E;&#xFF09;&#x4E0E;&#x4E91;&#x7AEF;&#x5EFA;&#x7ACB;&#x52A0;&#x5BC6;&#x901A;&#x4FE1;&#x6240;&#x7528;
+<img src="assets/lab1/pic3.jpg" alt="image">
+&#x4E0B;&#x8F7D;&#x5B8C;&#x540E;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x70B9;&#x51FB;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x6FC0;&#x6D3B;</p>
+<h4 id="3&#x8BBE;&#x7F6E;device&#x76F8;&#x5E94;&#x7684;&#x6743;&#x9650;&#xFF08;policy&#xFF09;">3.&#x8BBE;&#x7F6E;device&#x76F8;&#x5E94;&#x7684;&#x6743;&#x9650;&#xFF08;Policy&#xFF09;</h4>
+<p>&#x5DE6;&#x4FA7;TAB&#xFF0C;&#x9009;&#x62E9;Secure-&gt;Policies&#xFF0C;&#x70B9;&#x51FB;Create&#x521B;&#x5EFA;policy. &#x8F93;&#x5165;policyName,&#x4F8B;&#x5982;: lightdevie_policy,&#x7136;&#x540E;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;
+<img src="assets/lab1/pic4-0.jpg" alt="image"></p>
+<p>&#x70B9;&#x51FB;&#x4E0A;&#x56FE;add statements&#x4E2D;&#x7684;advanced mode&#xFF0C;&#x4F7F;&#x7528;json&#x6A21;&#x7248;&#x4E3A;&#x8BBE;&#x5907;&#x6DFB;&#x52A0;&#x6743;&#x9650;&#x3002;&#x590D;&#x5236;&#x5982;&#x4E0B;&#x7684;&#x6570;&#x636E;&#x5230;&#x547D;&#x4EE4;&#x884C;&#x4E2D;</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;Version&quot;</span>: <span class="hljs-string">&quot;2012-10-17&quot;</span>,
+  <span class="hljs-string">&quot;Statement&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Allow&quot;</span>,
+      <span class="hljs-string">&quot;Action&quot;</span>: [
+        <span class="hljs-string">&quot;iot:Publish&quot;</span>,
+        <span class="hljs-string">&quot;iot:Subscribe&quot;</span>,
+        <span class="hljs-string">&quot;iot:Connect&quot;</span>,
+        <span class="hljs-string">&quot;iot:Receive&quot;</span>
+      ],
+      <span class="hljs-string">&quot;Resource&quot;</span>: [
+        <span class="hljs-string">&quot;*&quot;</span>
+      ]
+    },
+    {
+      <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Allow&quot;</span>,
+      <span class="hljs-string">&quot;Action&quot;</span>: [
+        <span class="hljs-string">&quot;iot:GetThingShadow&quot;</span>,
+        <span class="hljs-string">&quot;iot:UpdateThingShadow&quot;</span>,
+        <span class="hljs-string">&quot;iot:DeleteThingShadow&quot;</span>
+      ],
+      <span class="hljs-string">&quot;Resource&quot;</span>: [
+        <span class="hljs-string">&quot;*&quot;</span>
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x4E2D;&#x7684;&#x4E3B;&#x8981;&#x5143;&#x7D20;&#x6709;Effect,Action&#x548C;Resource. &#x4EE5;&#x7B2C;&#x4E00;&#x6761;&#x4E3A;&#x4F8B;&#xFF0C;Effect:Allow&#xFF0C;&#x8868;&#x793A;&#x5141;&#x8BB8;&#x64CD;&#x4F5C;&#xFF1B;ACTION&#x7684;&#x4E2D;&#x7684;&quot;iot:Publish&quot;,&#x8868;&#x793A;&#x5141;&#x8BB8;&#x5DF2;&#x6CE8;&#x518C;&#x7684;&#x8BBE;&#x5907;&#x5411;&#x4E91;&#x7AEF;IoT Core&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF1B;&#x6700;&#x540E;Resource:* &#x8868;&#x793A;&#x53EF;&#x4EE5;&#x5BF9;&#x4EFB;&#x4F55;&#x4E91;&#x7AEF;&#x7684;topic&#x6267;&#x884C;&#x4E0A;&#x8FF0;&#x7684;ACTION&#x3002;</p>
+<ul>
+<li>&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4F1A;&#x9650;&#x5B9A;&#x8BBE;&#x5907;&#x53EA;&#x80FD;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x53D7;&#x6307;&#x5B9A;topic&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x4EE5;&#x514D;&#x6D88;&#x606F;&#x7684;&#x5F71;&#x54CD;</li>
+</ul>
+<h4 id="4&#x7ED1;&#x5B9A;&#x8BC1;&#x4E66;&#x548C;policy">4.&#x7ED1;&#x5B9A;&#x8BC1;&#x4E66;&#x548C;policy</h4>
+<p>&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;tab&#xFF0C;Secure-&gt;Certificates&#xFF0C;&#x9009;&#x4E2D;&#x521A;&#x521A;&#x521B;&#x5EFA;&#x7684;Certificates. &#x8FDB;&#x5165;Certificate&#x8BE6;&#x7EC6;&#x754C;&#x9762;&#x540E;&#xFF0C;&#x9009;&#x62E9;attach policy&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;
+&#x9009;&#x62E9;&#x4E0A;&#x4E00;&#x6B65;&#x4E2D;&#x521B;&#x5EFA;&#x7684; lightdevie_policy policy
+<img src="assets/lab1/pic4.jpg" alt="image"></p>
+<p>&#x81F3;&#x6B21;&#xFF0C;&#x8BBE;&#x5907;&#x518D;AWS IOT&#x4E2D;&#x7684;&#x6CE8;&#x518C;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#xFF0C;&#x4E0B;&#x9762;&#x8FDB;&#x5165;&#x6A21;&#x62DF;&#x8BBE;&#x5907;&#x8FD0;&#x884C;&#x7684;&#x73AF;&#x8282;&#x3002;</p>
+<h2 id="&#x4E09;&#x8BBE;&#x5907;&#x8FD0;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x8FDE;&#x63A5;aws-iot&#x4E91;&#x7AEF;&#x670D;&#x52A1;">&#x4E09;.&#x8BBE;&#x5907;&#x8FD0;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x8FDE;&#x63A5;AWS IOT&#x4E91;&#x7AEF;&#x670D;&#x52A1;</h2>
+<h4 id="1&#x4E0A;&#x4F20;&#x4EE3;&#x7801;&#x5230;&#x8BBE;&#x5907;">1.&#x4E0A;&#x4F20;&#x4EE3;&#x7801;&#x5230;&#x8BBE;&#x5907;</h4>
+<p>&#x7531;&#x4E8E;&#x672C;&#x6B21;&#x8BD5;&#x9A8C;&#x91C7;&#x7528;&#x7684;&#x4E3A;nodejs,&#x6240;&#x4EE5;&#x8981;&#x6C42;&#x6811;&#x8393;&#x6D3E;&#x4E0A;&#x9700;&#x8981;&#x6709;node&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;, &#x5E76;&#x4E14;&#x5C06;&#x4EE3;&#x7801;&#x5305;demo1.tar&#x8FDB;&#x884C;&#x4E0A;&#x4F20;&#x3002;&#x53E6;&#x5916;&#x7531;&#x4E8E;&#x6A21;&#x62DF;&#x4FE1;&#x606F;&#x53D1;&#x9001;&#xFF0C;&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x89C2;&#x770B;&#xFF0C;&#x5EFA;&#x8BAE;&#x7528;&#x6237;&#x540C;&#x65F6;&#x6253;&#x5F00;&#x6811;&#x8393;&#x6D3E;&#x4EE5;&#x53CA;AWS IOT&#x4E24;&#x4E2A;&#x754C;&#x9762;</p>
+<p>&#x4E0A;&#x4F20;&#x5B8C;&#x6BD5;&#x540E;&#x91C7;&#x7528;&#x4E0B;&#x8FF0;&#x7684;&#x6307;&#x4EE4;&#x89E3;&#x538B;</p>
+<pre><code class="lang-shell">$ tar -xvf demo1.tar
+</code></pre>
+<p>&#x4E0A;&#x4F20;&#x5728;1.&#x4E2D;&#x751F;&#x6210;&#x7684;&#x8BC1;&#x4E66;&#x5230;&#x4EE3;&#x7801;&#x7684;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#xFF0C;&#x653E;&#x7F6E;&#x540E;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+<pre><code class="lang-shell">pi@raspberrypi:~/Application/aws-smarthome-light/aws-smarthome-air-purifier/certs $ ls -l
+total 16
+-rw-r--r-- 1 pi pi 1758 Jun  7 15:45 ca.pem
+-rw-r--r-- 1 pi pi 1220 Jun  7 15:23 certificate.pem.crt
+-rw-r--r-- 1 pi pi 1679 Jun  7 15:23 private.pem.key
+-rw-r--r-- 1 pi pi  451 Jun  7 15:23 public.pem.key
+</code></pre>
+<p>&#x5176;&#x4E2D;aws-smarthome-air-purifier &#x4E3A;&#x4EE3;&#x7801;&#x89E3;&#x538B;&#x76EE;&#x5F55;</p>
+<h4 id="2&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x5E76;&#x8FD0;&#x884C;">2.&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x5E76;&#x8FD0;&#x884C;</h4>
+<p>&#x8FD4;&#x56DE;aws-smarthome-air-purifier/&#x4EE3;&#x7801;&#x76EE;&#x5F55;&#xFF0C;&#x4FEE;&#x6539;&#x4E3B;&#x8FD0;&#x884C;&#x6587;&#x4EF6;index.js&#x4E3A;&#x5982;&#x4E0B;
+<img src="assets/lab1/pic5.jpg" alt="image"></p>
+<p>&#x5BF9;&#x4E0E;&#x4E0A;&#x56FE;&#x4E2D;&#x7684;3&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5207;&#x6362;&#x56DE;AWS IOT&#x4E3B;&#x9875;&#x9762;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;TAB&#xFF0C;Manage-&gt;Things&#x3002;&#x9009;&#x62E9;&#x521A;&#x6CE8;&#x518C;&#x7684;thing&#x5982;light, &#x8FDB;&#x5165;&#x5982;&#x4E0B;&#x754C;&#x9762;&#xFF0C;&#x7EA2;&#x6846;&#x5373;&#x4F4D;endpoint
+<img src="assets/lab1/pic6.jpg" alt="image"></p>
+<p>&#x5207;&#x6362;&#x5230;&#x6811;&#x8393;&#x6D3E;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x4E0B;&#x8F7D;node&#x7684;&#x76F8;&#x5173;&#x4F9D;&#x8D56;&#x5305;&#xFF0C;&#x8F93;&#x5165;&#x5982;&#x4E0B;&#x6307;&#x4EE4;</p>
+<pre><code class="lang-shell">$ npm install
+</code></pre>
+<h4 id="3&#x9A8C;&#x8BC1;&#x6D88;&#x606F;&#x4E0A;&#x4F20;">3.&#x9A8C;&#x8BC1;&#x6D88;&#x606F;&#x4E0A;&#x4F20;</h4>
+<p>&#x5207;&#x6362;&#x5230;AWS Iot &#x754C;&#x9762;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4FA7; Test Tab&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x8BA2;&#x9605;lights_online topic&#xFF0C;&#x6B64;&#x5904;topic&#x53EA;&#x8981;&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;&#x5E94;&#x5373;&#x53EF;
+<img src="assets/lab1/pic7.jpg" alt="image"></p>
+<p>&#x7EE7;&#x7EED;&#x8FD4;&#x56DE;&#x6811;&#x8393;&#x6D3E;&#x547D;&#x4EE4;&#x884C;</p>
+<pre><code class="lang-shell">$node index.js
+</code></pre>
+<p>&#x5F97;&#x5230;&#x5982;&#x4E0B;&#x7684;&#x8F93;&#x51FA;:
+<img src="assets/lab1/pic8-0.jpg" alt="image"><br></p>
+<p>&#x540C;&#x65F6;&#x6211;&#x4EEC;&#x5728;Test&#x754C;&#x9762;&#x770B;&#x5230;&#x4E86;&#x6811;&#x8393;&#x6D3E;&#x5DF2;&#x4E0A;&#x7EBF;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x5373;&#x8BBE;&#x5907;&#x5230;&#x4E91;&#x7AEF;&#x7684;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x6210;&#x529F;&#x3002; 
+<img src="assets/lab1/pic8.jpg" alt="image"></p>
+<h4 id="4&#x9A8C;&#x8BC1;&#x6D88;&#x606F;&#x4E0B;&#x53D1;&#x7684;&#x903B;&#x8F91;">4.&#x9A8C;&#x8BC1;&#x6D88;&#x606F;&#x4E0B;&#x53D1;&#x7684;&#x903B;&#x8F91;</h4>
+<p>&#x540C;&#x6837;&#xFF0C;&#x5728;Test&#x754C;&#x9762;,&#x5E76;&#x4FEE;&#x6539;&#x6D88;&#x606F;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;
+<img src="assets/lab1/pic9.jpg" alt="image">
+&#x70B9;&#x51FB;publish to topic&#xFF0C;&#x53D1;&#x73B0;&#x706F;&#x4EAE;&#xFF08;&#x98CE;&#x6247;&#x8F6C;&#xFF09;
+&#x540C;&#x7406;&#xFF0C;&#x4FEE;&#x6539;message&#x7684;value&#x4E3A;0&#xFF0C;&#x70B9;&#x51FB;Publish to topic&#x53D1;&#x73B0;&#x706F;&#x706D;&#xFF08;&#x98CE;&#x6247;&#x505C;&#xFF09;&#x3002;</p>
+<h2 id="&#x505C;&#x6B62;&#x7A0B;&#x5E8F;&#xFF0C;&#x65AD;&#x5F00;&#x7535;&#x6E90;">&#x505C;&#x6B62;&#x7A0B;&#x5E8F;&#xFF0C;&#x65AD;&#x5F00;&#x7535;&#x6E90;</h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 简介">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="lab2.IoTCore.2.html" class="navigation navigation-next " aria-label="Next page: IoT Core实验2">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"IoT Core实验1","level":"1.2","depth":1,"next":{"title":"IoT Core实验2","level":"1.3","depth":1,"path":"lab2.IoTCore.2.md","ref":"lab2.IoTCore.2.md","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"lab1.IoTCore.1.md","mtime":"2018-07-19T15:21:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-19T15:22:18.238Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
