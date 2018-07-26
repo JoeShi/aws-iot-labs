@@ -26,27 +26,35 @@
 --------
 
 #### 1.创建物
-进入IOT 服务后，点击左侧列表Manage->Things,进入下述界面. 点击Register thing
+
 ![image](assets/lab1/pic2-1.jpg)
 
-此界面，实际环境下我们通常选择注册多个事物，此处为了演示，我们选择create a single thing.
+2. 此界面，实际环境下我们通常选择注册多个事物，此处为了演示，我们选择create a single thing.
+
 ![image](assets/lab1/pic2-2.jpg)
 
-进入如下列表后, 输入对于本地设备的命名, 比如light, 其他保持默认点击下一步.
- 
+3. 进入如下列表后, 输入对于本地设备的命名, 比如light, 其他保持默认点击下一步.
+
+   ![image](assets/lab1/pic2-1-1.jpg)
+
 #### 2.生成证书
-此页面点击create certificate
+
+1. 此页面点击create certificate
+
 ![image](assets/lab1/pic2-3.jpg)
 
-得到如下证书, 分别下载3个证书到本地，以及根证书，准备之后客户端（树莓派）与云端建立加密通信所用
+2. 得到如下证书, 分别下载3个证书到本地，以及根证书，准备之后客户端（树莓派）与云端建立加密通信所用
+
 ![image](assets/lab1/pic3.jpg)
 下载完后，还需要点击左下角的激活
 
 #### 3.设置device相应的权限（Policy）
-左侧TAB，选择Secure->Policies，点击Create创建policy. 输入policyName,例如: lightdevie_policy,然后如下图所示
+1. 左侧TAB，选择Secure->Policies，点击Create创建policy. 输入policyName,例如: lightdevie_policy,然后如下图所示
+
 ![image](assets/lab1/pic4-0.jpg)
 
-点击上图add statements中的advanced mode，使用json模版为设备添加权限。复制如下的数据到命令行中
+2. 点击上图add statements中的advanced mode，使用json模版为设备添加权限。复制如下的数据到命令行中
+
 ```json
 {
   "Version": "2012-10-17",
@@ -82,49 +90,81 @@
 * 在实际应用中，我们通常会限定设备只能发送和接受指定topic的消息，以免消息的影响
 
 #### 4.绑定证书和policy
+
 点击左侧tab，Secure->Certificates，选中刚刚创建的Certificates. 进入Certificate详细界面后，选择attach policy，如下图所示
 选择上一步中创建的 lightdevie_policy policy
 ![image](assets/lab1/pic4.jpg)
 
 至次，设备再AWS IOT中的注册已经结束，下面进入模拟设备运行的环节。
 
-三.设备运行代码，连接AWS IOT云端服务
+## 三.组装硬件设备
+
+#### 1.串联分压电阻
+
+将灯泡与 100 欧姆的的电阻串联在面包板上
+
+![](assets/lab1/pho-3-1.jpeg)
+
+#### 2.接入树莓派
+
+将面包板引出的两条线一端接入树莓派的**GPIO 的 17 号**引脚，另一端接空电平
+
+![](assets/lab1/pho-3-2.jpeg)
+
+#### 3.接通树莓派电源
+
 --------
 
-#### 1.上传代码到设备
-由于本次试验采用的为nodejs,所以要求树莓派上需要有node的运行环境, 并且将代码包demo1.tar进行上传。另外由于模拟信息发送，为了便于观看，建议用户同时打开树莓派以及AWS IOT两个界面
+## 四.设备运行代码，连接AWS IOT云端服务
 
-上传完毕后采用下述的指令解压
+#### 1.下载实验代码
+
+从 [GitHub 实验仓库](https://github.com/chinalabs/aws-iot-lab-1)中下载代码
+
+#### 2.设置证书
+
+在代码中新建 certs 目录，将在1.中生成的证书放到 certs 目录中，放置后如下所示
+
+![](assets/lab1/pic4-1.png)
+
+#### 3.修改代码并运行
+
+修改主运行文件index.js为如下
+![image](assets/lab1/pic5.jpg)
+
+对与上图中的3，我们需要切换回AWS IOT主页面，点击左侧TcdAB，Manage->Things。选择刚注册的thing如light, 进入如下界面，红框即位endpoint
+
+![image](assets/lab1/pic6.jpg)
+
+#### 4.上传代码到设备
+
+1. 运行以下命令在本地将代码压缩后，上传至树莓派
+
+```shell
+$ tar -cvf demo.tar aws-iot-lab-1/
+```
+
+2. 上传完毕后采用下述的指令解压
+
 ```shell
 $ tar -xvf demo1.tar
 ```
-上传在1.中生成的证书到代码的同级目录，放置后如下所示:
 
-```shell
-pi@raspberrypi:~/Application/aws-smarthome-light/aws-smarthome-air-purifier/certs $ ls -l
-total 16
--rw-r--r-- 1 pi pi 1758 Jun  7 15:45 ca.pem
--rw-r--r-- 1 pi pi 1220 Jun  7 15:23 certificate.pem.crt
--rw-r--r-- 1 pi pi 1679 Jun  7 15:23 private.pem.key
--rw-r--r-- 1 pi pi  451 Jun  7 15:23 public.pem.key
-```
-其中aws-smarthome-air-purifier 为代码解压目录
-#### 2.修改代码并运行
-返回aws-smarthome-air-purifier/代码目录，修改主运行文件index.js为如下
-![image](assets/lab1/pic5.jpg)
+3. 为树莓派安装[适用于 JavaScript 的 AWS IoT 设备软件开发工具包](https://docs.aws.amazon.com/zh_cn/iot/latest/developerguide/iot-device-sdk-node.html)
+4. 再进入代码目录，输入如下指令
 
-对与上图中的3，我们需要切换回AWS IOT主页面，点击左侧TAB，Manage->Things。选择刚注册的thing如light, 进入如下界面，红框即位endpoint
-![image](assets/lab1/pic6.jpg)
-
-切换到树莓派命令行，下载node的相关依赖包，输入如下指令
 ```shell
 $ npm install
 ```
-#### 3.验证消息上传
-切换到AWS Iot 界面，点击左侧 Test Tab，如下图所示订阅lights_online topic，此处topic只要与客户端对应即可
+
+#### 5.验证消息上传
+
+1. 切换到AWS Iot 界面，点击左侧 Test Tab，如下图所示订阅lights_oidnline topic，此处topic只要与客户端对应即可
+
 ![image](assets/lab1/pic7.jpg)
 
-继续返回树莓派命令行
+2. 继续返回树莓派命令行
+
 ```shell
 $node index.js
 ```
@@ -133,11 +173,12 @@ $node index.js
 
 同时我们在Test界面看到了树莓派已上线的消息，即设备到云端的发送消息成功。 
 ![image](assets/lab1/pic8.jpg)
-#### 4.验证消息下发的逻辑
+#### 6.验证消息下发的逻辑
+
 同样，在Test界面,并修改消息如下图所示
 ![image](assets/lab1/pic9.jpg)
-点击publish to topic，发现灯亮（风扇转）
-同理，修改message的value为0，点击Publish to topic发现灯灭（风扇停）。
+点击publish to topic，发现灯亮
+同理，修改message的value为0，点击Publish to topic发现灯灭。
 
 停止程序，断开电源
 --------
