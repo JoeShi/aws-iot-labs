@@ -26,6 +26,7 @@
 --------
 
 #### 1.创建物
+1. 进入IOT 服务后，点击左侧列表Manage->Things,进入下述界面. 点击Register thing
 
 ![image](assets/lab1/pic2-1.jpg)
 
