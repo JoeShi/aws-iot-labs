@@ -209,14 +209,34 @@
 </ul>
 <h2 id="&#x4E00;&#x521B;&#x5EFA;dynamodb&#x7684;&#x8868;&#x683C;">&#x4E00;.&#x521B;&#x5EFA;DynamoDB&#x7684;&#x8868;&#x683C;</h2>
 <p>IoT&#x4E2D;&#x7684;&#x8BBE;&#x5907;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x5230;&#x4E91;&#x7AEF;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#xFF0C;&#x5B58;&#x50A8;&#x6D41;&#x7A0B;&#x3002;&#x672C;&#x5B9E;&#x9A8C;&#x5C06;light&#x8BBE;&#x5907;&#x4E2D;&#x7684;&#x72B6;&#x6001;&#x90FD;&#x5B58;&#x50A8;&#x5230;Dynamodb&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x3002;</p>
-<p>&#x8FDB;&#x5165;DynamoDb&#x670D;&#x52A1;&#xFF0C;&#x8868;&#x683C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x70B9;&#x51FB;&#x521B;&#x5EFA;&#xFF0C;&#x9664;&#x4E86;&#x540D;&#x5B57;&#x4EE5;&#x5916;&#x90FD;&#x9009;&#x62E9;&#x9ED8;&#x8BA4;&#x3002;
-<img src="assets/lab2/pic1.jpg" alt="image"></p>
+<p>&#x8FDB;&#x5165;DynamoDb&#x670D;&#x52A1;&#xFF0C;&#x8868;&#x683C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x70B9;&#x51FB;&#x521B;&#x5EFA;&#xFF0C;&#x9664;&#x4E86;&#x540D;&#x5B57;&#x4EE5;&#x5916;&#x90FD;&#x9009;&#x62E9;&#x9ED8;&#x8BA4;&#x3002;(&#x4E3B;&#x952E; thingname&#xFF1F;)</p>
+<ul>
+<li><strong>Table name</strong>&#xFF1A;<strong>light_record</strong></li>
+<li><strong>Partition key</strong>&#xFF1A;<strong>ThingName</strong>&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;<strong>String</strong></li>
+<li><strong>&#x5176;&#x4ED6;&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;</strong></li>
+</ul>
+<p><img src="assets/lab2/pic1.jpg" alt="image"></p>
 <p>&#x70B9;&#x51FB;&#x8FDB;&#x5165;Item&#x680F;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x73B0;&#x5728;&#x662F;&#x6CA1;&#x6709;Item&#x7684;&#x3002;</p>
 <h2 id="&#x4E8C;&#x914D;&#x7F6E;rule-engine">&#x4E8C;.&#x914D;&#x7F6E;Rule Engine</h2>
-<p>&#x8FDB;&#x5165;AWS IOT&#x4E3B;&#x754C;&#x9762;&#xFF0C;&#x70B9;&#x51FB;Act&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x53F3;&#x4E0A;&#x89D2;Create&#x6309;&#x94AE;&#x3002;&#x8FDB;&#x5165;&#x521B;&#x5EFA;&#x9875;&#x9762;&#x540E;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF0C;&#x540D;&#x5B57;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;
-<img src="assets/lab2/pic2.jpg" alt="image"></p>
-<p>&#x6700;&#x540E;&#x70B9;&#x51FB; Add action&#xFF0C;&#x9009;&#x62E9;insert a message to DynamoDb Table&#x3002;&#x63D2;&#x5165;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;
-<img src="assets/lab2/pic3.jpg" alt="image"></p>
+<p>&#x8FDB;&#x5165;AWS IOT&#x4E3B;&#x754C;&#x9762;&#xFF0C;&#x70B9;&#x51FB;Act&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x53F3;&#x4E0A;&#x89D2;Create&#x6309;&#x94AE;&#x3002;&#x8FDB;&#x5165;&#x521B;&#x5EFA;&#x9875;&#x9762;&#x540E;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF0C;&#x540D;&#x5B57;&#x4E0E;&#x63CF;&#x8FF0;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;</p>
+<ul>
+<li><strong>Name</strong>&#xFF1A;<strong>light_on_status</strong>&#xFF08;&#x53EF;&#x81EA;&#x5B9A;&#x4E49;&#xFF09;</li>
+<li><strong>Desrrlption</strong>&#xFF1A;&#x81EA;&#x5B9A;&#x4E49;</li>
+<li><strong>Attribute</strong>&#xFF1A;<strong>*</strong></li>
+<li><strong>Topic filter</strong>&#xFF1A;<strong>$aws/things/light/shadow/update</strong></li>
+<li><strong>&#x5176;&#x4ED6;&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;</strong></li>
+</ul>
+<p><img src="assets/lab2/pic2.png" alt="image"></p>
+<p>&#x6700;&#x540E;&#x70B9;&#x51FB; Add action&#xFF0C;&#x9009;&#x62E9;insert a message to DynamoDb Table&#x3002;&#x63D2;&#x5165;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;</p>
+<ul>
+<li><strong>Table Name</strong>&#xFF1A;&#x9009;&#x62E9;&#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;<strong>light_record</strong></li>
+<li><strong>Hash key</strong>&#xFF1A;&#x5DF2;&#x88AB;&#x56FA;&#x5B9A;&#x4E3A;<strong>ThingName</strong></li>
+<li><strong>Hash key type</strong>&#xFF1A;&#x5DF2;&#x88AB;&#x56FA;&#x5B9A;&#x4E3A;<strong>STRING</strong></li>
+<li><strong>Hash key value</strong>&#xFF1A;<strong>${topic(3)}</strong></li>
+<li><strong>Write message data to this column</strong>&#xFF1A;<strong>payload</strong></li>
+<li><strong>&#x5176;&#x4ED6;&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;</strong></li>
+</ul>
+<p><img src="assets/lab2/pic3.jpg" alt="image"></p>
 <p>&#x6B64;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;IOT&#x670D;&#x52A1;&#x80FD;&#x591F;&#x8BBF;&#x95EE;DynamoDB&#x6570;&#x636E;&#x5E93;&#x7684;Role&#xFF0C;&#x9009;&#x62E9;&#x5728;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#x4E2D;&#x521B;&#x5EFA;&#x7684;Role&#xFF0C;&#x70B9;&#x51FB;add action&#x3002;</p>
 <ul>
 <li>&#x5BF9;&#x4E8E;&#x66F4;&#x591A;&#x7684;&#x5173;&#x4E8E;&#x5199;&#x5165;DynamoDB&#x7684;&#x89C4;&#x5219;&#x53EF;&#x53C2;&#x8003;&#xFF1A;
@@ -226,40 +246,22 @@
 </ul>
 <h2 id="&#x4E09;&#x6D4B;&#x8BD5;&#x8BBE;&#x5907;&#x4E0E;&#x4E91;&#x7AEF;&#x901A;&#x4FE1;">&#x4E09;.&#x6D4B;&#x8BD5;&#x8BBE;&#x5907;&#x4E0E;&#x4E91;&#x7AEF;&#x901A;&#x4FE1;</h2>
 <h4 id="1&#x4E0A;&#x4F20;&#x4EE3;&#x7801;&#x5230;&#x8BBE;&#x5907;">1.&#x4E0A;&#x4F20;&#x4EE3;&#x7801;&#x5230;&#x8BBE;&#x5907;</h4>
-<p>&#x7531;&#x4E8E;&#x672C;&#x6B21;&#x8BD5;&#x9A8C;&#x91C7;&#x7528;&#x7684;&#x4E3A;nodejs,&#x6240;&#x4EE5;&#x8981;&#x6C42;&#x6811;&#x8393;&#x6D3E;&#x4E0A;&#x9700;&#x8981;&#x6709;node&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;, &#x5E76;&#x4E14;&#x5C06;&#x4EE3;&#x7801;&#x5305;demo2.tar&#x8FDB;&#x884C;&#x4E0A;&#x4F20;
-&#x4E0A;&#x4F20;&#x5B8C;&#x6BD5;&#x540E;&#x91C7;&#x7528;&#x4E0B;&#x8FF0;&#x7684;&#x6307;&#x4EE4;&#x89E3;&#x538B;</p>
-<pre><code class="lang-shell">$ tar -xvf demo2.tar
-</code></pre>
-<p>&#x4E0A;&#x4F20;&#x5728;&#x5B9E;&#x9A8C;1&#x4E2D;&#x751F;&#x6210;&#x7684;&#x8BC1;&#x4E66;&#x5230;&#x4EE3;&#x7801;&#x7684;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#xFF0C;&#x653E;&#x7F6E;&#x540E;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
-<pre><code class="lang-shell">pi@raspberrypi:~/Application/aws-smarthome-light-shadow/aws-smarthome-air-purifier/certs $ ls -l
-total 16
--rw-r--r-- 1 pi pi 1758 Jun  7 15:45 ca.pem
--rw-r--r-- 1 pi pi 1220 Jun  7 15:23 certificate.pem.crt
--rw-r--r-- 1 pi pi 1679 Jun  7 15:23 private.pem.key
--rw-r--r-- 1 pi pi  451 Jun  7 15:23 public.pem.key
-</code></pre>
-<p>&#x5176;&#x4E2D;aws-smarthome-air-purifier &#x4E3A;&#x4EE3;&#x7801;&#x89E3;&#x538B;&#x76EE;&#x5F55;</p>
-<h4 id="2&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x5E76;&#x8FD0;&#x884C;">2.&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x5E76;&#x8FD0;&#x884C;</h4>
-<p>&#x4FEE;&#x6539;index.js&#x4E3B;&#x7A0B;&#x5E8F;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br>
-<img src="assets/lab2/pic4.jpg" alt="image"></p>
-<p>&#x5207;&#x6362;&#x5230;AWS IOT&#x4E3B;&#x9875;&#x9762;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;TAB&#xFF0C;Manage-&gt;Things&#x3002;&#x9009;&#x62E9;&#x521A;&#x6CE8;&#x518C;&#x7684;thing &#x5982;light, &#x8FDB;&#x5165;&#x5982;&#x4E0B;&#x754C;&#x9762;&#xFF0C;&#x7EA2;&#x6846;&#x5373;&#x4F4D;&#x4E0A;&#x56FE;3&#x6240;&#x9700;&#x7684;&#x7AEF;&#x70B9;&#xFF08;endpoint&#xFF09;
-<img src="assets/lab2/pic5.jpg" alt="image"></p>
-<p>&#x8FD4;&#x56DE;&#x6811;&#x8393;&#x6D3E;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x4E0B;&#x8F7D;node&#x7684;&#x76F8;&#x5173;&#x4F9D;&#x8D56;&#x5305;&#xFF0C;&#x8F93;&#x5165;&#x5982;&#x4E0B;&#x6307;&#x4EE4;</p>
-<pre><code class="lang-shell">$ npm install
-</code></pre>
-<h4 id="3&#x6D4B;&#x8BD5;&#x51C6;&#x5907;">3.&#x6D4B;&#x8BD5;&#x51C6;&#x5907;</h4>
+<p>&#x4E0E;<a href="lab1.IoTCore.1.html">&#x5B9E;&#x9A8C;&#x4E00;</a>&#x76F8;&#x540C;&#xFF0C;&#x7EC4;&#x88C5;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#xFF0C;&#x4ECE; <a href="https://github.com/chinalabs/aws-iot-lab-1" target="_blank">GitHub &#x5B9E;&#x9A8C;&#x4ED3;&#x5E93;</a>&#x4E2D;&#x4E0B;&#x8F7D;&#x5E76;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#xFF0C;&#x518D;&#x5C06;&#x4EE3;&#x7801;&#x4E0A;&#x4F20;&#x81F3;&#x8BBE;&#x5907;&#x3002;</p>
+<h4 id="2&#x6D4B;&#x8BD5;&#x51C6;&#x5907;">2.&#x6D4B;&#x8BD5;&#x51C6;&#x5907;</h4>
 <p>&#x9996;&#x5148;&#xFF0C;&#x5728;&#x539F;&#x6709;&#x4E24;&#x4E2A;&#x754C;&#x9762;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x518D;&#x6253;&#x5F00;&#x4E00;&#x4E2A;AWS IOT&#x754C;&#x9762;&#x3002;&#x4E09;&#x4E2A;&#x754C;&#x9762;&#x5206;&#x522B;&#x4E3A;:</p>
 <ul>
-<li>&#x754C;&#x9762;1: &#x6811;&#x8393;&#x6D3E;&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;</li>
-<li>&#x754C;&#x9762;2: AWS IOT Test&#x754C;&#x9762;</li>
-<li>&#x754C;&#x9762;3: AWS IOT Manage-&gt;Thing-&gt;light-&gt;shadow<h4 id="4&#x6D4B;&#x8BD5;&#x8BBE;&#x5907;&#x6CE8;&#x518C;">4.&#x6D4B;&#x8BD5;&#x8BBE;&#x5907;&#x6CE8;&#x518C;</h4>
-&#x5728;&#x6811;&#x8393;&#x6D3E;&#x754C;&#x9762;&#x6267;&#x884C;&#x4E0B;&#x8FF0;&#x7A0B;&#x5E8F;&#x3002;<pre><code class="lang-shell">$node index.js
-</code></pre>
-&#x5F97;&#x5230;&#x8BBE;&#x5907;&#x5DF2;&#x6210;&#x529F;&#x6CE8;&#x518C;&#x7684;&#x8FD4;&#x56DE;&#x3002;</li>
+<li><p>&#x754C;&#x9762;1: &#x6811;&#x8393;&#x6D3E;&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;</p>
+<p><img src="assets/lab2/interf-1.png" alt=""></p>
+</li>
+<li><p>&#x754C;&#x9762;2: AWS IOT Test&#x754C;&#x9762;</p>
+<p><img src="assets/lab2/inter-2png.png" alt=""></p>
+</li>
+<li><p>&#x754C;&#x9762;3: AWS IOT Manage-&gt;Thing-&gt;light-&gt;shadow</p>
+<p><img src="assets/lab2/interf-3.png" alt=""></p>
+<h4 id="3&#x6D4B;&#x8BD5;&#x5229;&#x7528;device-shadow&#x8FDB;&#x884C;&#x8BBE;&#x5907;&#x63A7;&#x5236;">3.&#x6D4B;&#x8BD5;&#x5229;&#x7528;Device shadow&#x8FDB;&#x884C;&#x8BBE;&#x5907;&#x63A7;&#x5236;</h4>
+</li>
 </ul>
-<p>&#x8FD4;&#x56DE;&#x6D4B;&#x8BD5;&#x51C6;&#x5907;&#x4E2D;&#x7684;&#x754C;&#x9762;3&#x3002;&#x67E5;&#x770B;&#x5230;Device shadow&#x5DF2;&#x7ECF;&#x63A5;&#x53D7;&#x5230;&#x4E86;&#x6811;&#x8393;&#x6D3E;&#x6CE8;&#x518C;&#x7684;&#x521D;&#x59CB;&#x4FE1;&#x606F;. </p>
-<h4 id="5&#x6D4B;&#x8BD5;&#x5229;&#x7528;device-shadow&#x8FDB;&#x884C;&#x8BBE;&#x5907;&#x63A7;&#x5236;">5.&#x6D4B;&#x8BD5;&#x5229;&#x7528;Device shadow&#x8FDB;&#x884C;&#x8BBE;&#x5907;&#x63A7;&#x5236;</h4>
-<p>&#x5207;&#x6362;&#x5230;&#x754C;&#x9762;2&#xFF0C;&#x53D1;&#x9001;&#x5982;&#x4E0B;&#x7684;&#x6D88;&#x606F;&#x5230;topic: $aws/things/light/shadow/update</p>
+<p>&#x5207;&#x6362;&#x5230;&#x754C;&#x9762;2&#xFF0C;&#x53D1;&#x9001;&#x5982;&#x4E0B;&#x7684;&#x6D88;&#x606F;&#x5230;topic: <strong>$aws/things/light/shadow/update</strong></p>
 <pre><code class="lang-json">{
   <span class="hljs-string">&quot;state&quot;</span>:{
     <span class="hljs-string">&quot;desired&quot;</span>: {
@@ -268,18 +270,10 @@ total 16
   }
 }
 </code></pre>
-<p>&#x89C2;&#x5BDF;&#x5230;&#x706F;&#xFF08;&#x98CE;&#x6247;&#xFF09;&#x5DF2;&#x4EAE;&#xFF0C;&#x540C;&#x65F6;&#x89C2;&#x770B;&#x754C;&#x9762;3&#xFF0C;&#x53D1;&#x73B0;&#x5982;&#x4E0B;&#x6240;&#x793A;</p>
-<pre><code class="lang-json">{
-  <span class="hljs-string">&quot;state&quot;</span>:{
-    <span class="hljs-string">&quot;desired&quot;</span>: {
-      <span class="hljs-string">&quot;light&quot;</span>: <span class="hljs-string">&quot;on&quot;</span>
-    },
-    <span class="hljs-string">&quot;reported&quot;</span>: {
-      <span class="hljs-string">&quot;light&quot;</span>: <span class="hljs-string">&quot;on&quot;</span>
-    }
-  }
-}
-</code></pre>
+<p>&#x89C2;&#x5BDF;&#x5230;&#x706F;&#xFF08;&#x98CE;&#x6247;&#xFF09;&#x5DF2;&#x4EAE;&#xFF0C;</p>
+<p><img src="assets/lab2/result-1-2.jpeg" alt=""></p>
+<p>&#x540C;&#x65F6;&#x89C2;&#x770B;&#x754C;&#x9762;3&#xFF0C;&#x53D1;&#x73B0;&#x5982;&#x4E0B;&#x6240;&#x793A;</p>
+<p><img src="assets/lab2/result-1-3.png" alt=""></p>
 <p>&#x8BF4;&#x660E;&#x8BBE;&#x5907;&#x5DF2;&#x7ECF;&#x63A5;&#x53D7;&#x5230;&#x4E86;&#x6A21;&#x62DF;&#x7684;&#x5F00;&#x542F;&#x6307;&#x4EE4;&#xFF08;&#x5B9E;&#x9645;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x7684;&#x53EF;&#x80FD;&#x662F;&#x624B;&#x673A;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x667A;&#x80FD;&#x7EC8;&#x7AEF;&#x4EA7;&#x7247;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x62A5;&#x544A;&#x4E86;&#x81EA;&#x8EAB;&#x5F53;&#x524D;&#x5DF2;&#x4EAE;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x66F4;&#x65B0;device shadow&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x3002;&#x518D;&#x6B21;&#x5728;&#x754C;&#x9762;2&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5230;&#x76F8;&#x540C;&#x7684;topic</p>
 <pre><code class="lang-json">{
   <span class="hljs-string">&quot;state&quot;</span>:{
@@ -289,22 +283,14 @@ total 16
   }
 }
 </code></pre>
-<p>&#x53D1;&#x73B0;&#x706F;&#x5DF2;&#x706D;&#xFF0C;&#x540C;&#x65F6;&#x754C;&#x9762;3&#x5F97;&#x5230;&#x5982;&#x4E0B;&#x7684;&#x8F93;&#x51FA;</p>
-<pre><code class="lang-json">{
-  <span class="hljs-string">&quot;state&quot;</span>:{
-    <span class="hljs-string">&quot;desired&quot;</span>: {
-      <span class="hljs-string">&quot;light&quot;</span>: <span class="hljs-string">&quot;off&quot;</span>
-    },
-    <span class="hljs-string">&quot;reported&quot;</span>: {
-      <span class="hljs-string">&quot;light&quot;</span>: <span class="hljs-string">&quot;off&quot;</span>
-    }
-  }
-}
-</code></pre>
+<p>&#x53D1;&#x73B0;&#x706F;&#x5DF2;&#x706D;,<img src="assets/lab2/result-1-2.png" alt=""></p>
+<p>&#x540C;&#x65F6;&#x754C;&#x9762;3&#x5F97;&#x5230;&#x5982;&#x4E0B;&#x7684;&#x8F93;&#x51FA;</p>
+<p><img src="assets/lab2/result-1-4.jpg" alt=""></p>
 <p>&#x8BF4;&#x660E;&#x8BBE;&#x5907;&#x5DF2;&#x7ECF;&#x63A5;&#x53D7;&#x5230;&#x4E86;&#x5173;&#x95ED;&#x6307;&#x4EE4;&#xFF0C;&#x5E76;&#x4E14;&#x62A5;&#x544A;&#x4E86;&#x81EA;&#x8EAB;&#x5F53;&#x524D;&#x5DF2;&#x706D;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x66F4;&#x65B0;&#x4E86;&#x5BF9;&#x5E94;&#x7684;device shadow&#x3002;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x5C1D;&#x8BD5;&#x5982;&#x4E0B;topic&#xFF0C;&#x8FDB;&#x884C;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x7684;&#x67E5;&#x8BE2;
 $aws/things/light/shadow/get</p>
-<h4 id="5&#x6D4B;&#x8BD5;rule-engine&#x7684;&#x6548;&#x679C;">5.&#x6D4B;&#x8BD5;Rule engine&#x7684;&#x6548;&#x679C;</h4>
-<p>&#x6211;&#x4EEC;&#x5728;&#x6B65;&#x9AA4;1&#x4E2D;&#x8BBE;&#x7F6E;&#x4E86;rule engine&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5373;&#x628A;&#x5BF9;&#x5E94;&#x4E8E;&#x706F;&#x6CE1;&#xFF08;&#x98CE;&#x6247;&#xFF09;&#x5F00;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8FDB;&#x884C;&#x8BB0;&#x5F55;&#x3002;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x53BB;&#x67E5;&#x8BE2;&#x6211;&#x4EEC;&#x5BF9;&#x5E94;&#x7684;dynamodb&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5176;&#x4E2D;&#x5DF2;&#x7ECF;&#x63D2;&#x5165;&#x4E86;&#x6570;&#x6761;&#x4FE1;&#x606F;&#x3002;&#x4E3B;&#x952E;&#x4E3A;&#x7269;&#x7684;&#x540D;&#x79F0;&#xFF0C;payload&#x5217;&#x4E3A;&#x6BCF;&#x6761;&#x706F;&#x6CE1;&#xFF08;&#x98CE;&#x6247;&#xFF09;&#x5F00;&#x5173;&#x7684;&#x5177;&#x4F53;&#x6307;&#x4EE4;&#x3002;</p>
+<h4 id="4&#x6D4B;&#x8BD5;rule-engine&#x7684;&#x6548;&#x679C;">4.&#x6D4B;&#x8BD5;Rule engine&#x7684;&#x6548;&#x679C;</h4>
+<p>&#x6211;&#x4EEC;&#x5728;&#x6B65;&#x9AA4;1&#x4E2D;&#x8BBE;&#x7F6E;&#x4E86;rule engine&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5373;&#x628A;&#x5BF9;&#x5E94;&#x4E8E;&#x706F;&#x6CE1;&#x5F00;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8FDB;&#x884C;&#x8BB0;&#x5F55;&#x3002;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x53BB;&#x67E5;&#x8BE2;&#x6211;&#x4EEC;&#x5BF9;&#x5E94;&#x7684;dynamodb&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5176;&#x4E2D;&#x5DF2;&#x7ECF;&#x63D2;&#x5165;&#x4E86;&#x4FE1;&#x606F;&#x3002;&#x4E3B;&#x952E;&#x4E3A;&#x7269;&#x7684;&#x540D;&#x79F0;&#xFF0C;payload&#x5217;&#x4E3A;&#x6BCF;&#x6761;&#x706F;&#x6CE1;&#xFF08;&#x98CE;&#x6247;&#xFF09;&#x5F00;&#x5173;&#x7684;&#x5177;&#x4F53;&#x6307;&#x4EE4;&#x3002;</p>
+<p><img src="assets/lab2/result.png" alt=""></p>
 <h2 id="&#x5B9E;&#x9A8C;&#x7ED3;&#x675F;">&#x5B9E;&#x9A8C;&#x7ED3;&#x675F;</h2>
 
                                 
@@ -349,7 +335,7 @@ $aws/things/light/shadow/get</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"IoT Core实验2","level":"1.3","depth":1,"next":{"title":"IoT Greengrass实验","level":"1.4","depth":1,"path":"lab3.greengrass.md","ref":"lab3.greengrass.md","articles":[]},"previous":{"title":"IoT Core实验1","level":"1.2","depth":1,"path":"lab1.IoTCore.1.md","ref":"lab1.IoTCore.1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"lab2.IoTCore.2.md","mtime":"2018-07-19T15:21:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-19T15:22:18.238Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"IoT Core实验2","level":"1.3","depth":1,"next":{"title":"IoT Greengrass实验","level":"1.4","depth":1,"path":"lab3.greengrass.md","ref":"lab3.greengrass.md","articles":[]},"previous":{"title":"IoT Core实验1","level":"1.2","depth":1,"path":"lab1.IoTCore.1.md","ref":"lab1.IoTCore.1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"lab2.IoTCore.2.md","mtime":"2018-07-30T03:45:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-30T03:46:08.307Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
