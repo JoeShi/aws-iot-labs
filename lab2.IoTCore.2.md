@@ -16,7 +16,12 @@
 ----------------
 IoT中的设备消息发送到云端后，可以触发相应的数据处理，存储流程。本实验将light设备中的状态都存储到Dynamodb数据库中。
 
-进入DynamoDb服务，表格如下所示，点击创建，除了名字以外都选择默认。
+进入DynamoDb服务，表格如下所示，点击创建，除了名字以外都选择默认。(主键 thingname？)
+
+- **Table name**：**light_record**
+- **Partition key**：**ThingName**，类型为**String**
+- **其他保持默认**
+
 ![image](assets/lab2/pic1.jpg)
 
 
@@ -24,10 +29,25 @@ IoT中的设备消息发送到云端后，可以触发相应的数据处理，�
 
 二.配置Rule Engine
 ----------------
-进入AWS IOT主界面，点击Act，然后点击右上角Create按钮。进入创建页面后，如下图所示进行设置，名字可以自定义
-![image](assets/lab2/pic2.jpg)
+进入AWS IOT主界面，点击Act，然后点击右上角Create按钮。进入创建页面后，如下图所示进行设置，名字与描述可以自定义
+
+- **Name**：**light_on_status**（可自定义）
+- **Desrrlption**：自定义
+- **Attribute**：**\***
+- **Topic filter**：**$aws/things/light/shadow/update**
+- **其他保持默认**
+
+![image](assets/lab2/pic2.png)
 
 最后点击 Add action，选择insert a message to DynamoDb Table。插入规则如下图所示
+
+- **Table Name**：选择之前创建的**light_record**
+- **Hash key**：已被固定为**ThingName**
+- **Hash key type**：已被固定为**STRING**
+- **Hash key value**：**${topic(3)}**
+- **Write message data to this column**：**payload**
+- **其他保持默认**
+
 ![image](assets/lab2/pic3.jpg)
 
 此时，需要建立一个IOT服务能够访问DynamoDB数据库的Role，选择在前提条件中创建的Role，点击add action。
@@ -39,47 +59,25 @@ IoT中的设备消息发送到云端后，可以触发相应的数据处理，�
 三.测试设备与云端通信
 ----------------
 #### 1.上传代码到设备
-由于本次试验采用的为nodejs,所以要求树莓派上需要有node的运行环境, 并且将代码包demo2.tar进行上传
-上传完毕后采用下述的指令解压
-```shell
-$ tar -xvf demo2.tar
-```
-上传在实验1中生成的证书到代码的同级目录，放置后如下所示:
-```shell
-pi@raspberrypi:~/Application/aws-smarthome-light-shadow/aws-smarthome-air-purifier/certs $ ls -l
-total 16
--rw-r--r-- 1 pi pi 1758 Jun  7 15:45 ca.pem
--rw-r--r-- 1 pi pi 1220 Jun  7 15:23 certificate.pem.crt
--rw-r--r-- 1 pi pi 1679 Jun  7 15:23 private.pem.key
--rw-r--r-- 1 pi pi  451 Jun  7 15:23 public.pem.key
-```
-其中aws-smarthome-air-purifier 为代码解压目录
-#### 2.修改代码并运行
-修改index.js主程序如下图所示：<br>
-![image](assets/lab2/pic4.jpg)
 
-切换到AWS IOT主页面，点击左侧TAB，Manage->Things。选择刚注册的thing 如light, 进入如下界面，红框即位上图3所需的端点（endpoint）
-![image](assets/lab2/pic5.jpg)
+与[实验一](lab1.IoTCore.1.md)相同，组装硬件设备，从 [GitHub 实验仓库](https://github.com/chinalabs/aws-iot-lab-1)中下载并修改代码，再将代码上传至设备。
 
-返回树莓派命令行，下载node的相关依赖包，输入如下指令
-```shell
-$ npm install
-```
-#### 3.测试准备
+#### 2.测试准备
 首先，在原有两个界面的基础上，再打开一个AWS IOT界面。三个界面分别为:
   * 界面1: 树莓派命令行界面
-  * 界面2: AWS IOT Test界面
-  * 界面3: AWS IOT Manage->Thing->light->shadow
-#### 4.测试设备注册
-在树莓派界面执行下述程序。
-```shell
-$node index.js
-```
-得到设备已成功注册的返回。
 
-返回测试准备中的界面3。查看到Device shadow已经接受到了树莓派注册的初始信息. 
-#### 5.测试利用Device shadow进行设备控制
-切换到界面2，发送如下的消息到topic: $aws/things/light/shadow/update
+    ![](assets/lab2/interf-1.png)
+
+  * 界面2: AWS IOT Test界面
+
+    ![](assets/lab2/inter-2png.png)
+
+  * 界面3: AWS IOT Manage->Thing->light->shadow
+
+    ![](assets/lab2/interf-3.png)
+#### 3.测试利用Device shadow进行设备控制
+
+切换到界面2，发送如下的消息到topic: **$aws/things/light/shadow/update**
 ```json
 {
   "state":{
@@ -89,19 +87,14 @@ $node index.js
   }
 }
 ```
-观察到灯（风扇）已亮，同时观看界面3，发现如下所示
-```json
-{
-  "state":{
-    "desired": {
-      "light": "on"
-    },
-    "reported": {
-      "light": "on"
-    }
-  }
-}
-```
+观察到灯（风扇）已亮，
+
+![](assets/lab2/result-1-2.jpeg)
+
+同时观看界面3，发现如下所示
+
+![](assets/lab2/result-1-3.png)
+
 说明设备已经接受到了模拟的开启指令（实际场景中，发送命令的可能是手机或者其他智能终端产片），并且报告了自身当前已亮的消息，更新device shadow状态信息。再次在界面2发送消息到相同的topic
 ```json
 {
@@ -112,23 +105,20 @@ $node index.js
   }
 }
 ```
-发现灯已灭，同时界面3得到如下的输出
-```json
-{
-  "state":{
-    "desired": {
-      "light": "off"
-    },
-    "reported": {
-      "light": "off"
-    }
-  }
-}
-```
+发现灯已灭,![](assets/lab2/result-1-2.png)
+
+同时界面3得到如下的输出
+
+![](assets/lab2/result-1-4.jpg)
+
 说明设备已经接受到了关闭指令，并且报告了自身当前已灭的消息，更新了对应的device shadow。可以继续尝试如下topic，进行当前状态信息的查询
 $aws/things/light/shadow/get
-#### 5.测试Rule engine的效果
-我们在步骤1中设置了rule engine的规则，即把对应于灯泡（风扇）开关的信息，进行记录。那么我们现在去查询我们对应的dynamodb数据库，可以发现其中已经插入了数条信息。主键为物的名称，payload列为每条灯泡（风扇）开关的具体指令。
+
+#### 4.测试Rule engine的效果
+
+我们在步骤1中设置了rule engine的规则，即把对应于灯泡开关的信息，进行记录。那么我们现在去查询我们对应的dynamodb数据库，可以发现其中已经插入了信息。主键为物的名称，payload列为每条灯泡（风扇）开关的具体指令。
+
+![](assets/lab2/result.png)
 
 实验结束
 ------
