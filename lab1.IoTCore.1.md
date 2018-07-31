@@ -108,7 +108,7 @@
 
 #### 2.接入树莓派
 
-将面包板引出的两条线一端接入树莓派的**GPIO 的 17 号**引脚，另一端接空电平
+将面包板引出的两条线一端接入树莓派的**GPIO 的 17 号**引脚，另一端接地
 
 ![](assets/lab1/pho-3-2.jpeg)
 
@@ -120,7 +120,7 @@
 
 #### 1.下载实验代码
 
-从 [GitHub 实验仓库](https://github.com/chinalabs/aws-iot-lab-1)中下载代码
+从 [代码桶](https://s3-us-west-2.amazonaws.com/chinalabs/aws-iot-lab-1.zip)中下载代码,并解压
 
 #### 2.设置证书
 
@@ -148,7 +148,7 @@ $ tar -cvf demo.tar aws-iot-lab-1/
 2. 上传完毕后采用下述的指令解压
 
 ```shell
-$ tar -xvf demo1.tar
+$ tar -xvf demo.tar
 ```
 
 3. 为树莓派安装[适用于 JavaScript 的 AWS IoT 设备软件开发工具包](https://docs.aws.amazon.com/zh_cn/iot/latest/developerguide/iot-device-sdk-node.html)
@@ -160,7 +160,7 @@ $ npm install
 
 #### 5.验证消息上传
 
-1. 切换到AWS Iot 界面，点击左侧 Test Tab，如下图所示订阅lights_oidnline topic，此处topic只要与客户端对应即可
+1. 切换到AWS Iot 界面，点击左侧 Test Tab，如下图所示订阅`lights_oidnline` topic，此处topic只要与客户端对应即可
 
 ![image](assets/lab1/pic7.jpg)
 
