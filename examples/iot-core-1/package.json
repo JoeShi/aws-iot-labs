@@ -1,0 +1,25 @@
+{
+  "name": "aws-smarthome-air-purifier",
+  "version": "0.1.0",
+  "description": "AWS IoT SmartHome DemoKit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/aws-smarthome-air-purifier"
+  },
+  "keywords": [
+    "AWS",
+    "IoT",
+    "SmartHome"
+  ],
+  "author": "Joe SHI <qiaoshi@amazon.com>",
+  "license": "MIT",
+  "dependencies": {
+    "aws-iot-device-sdk": "^2.2.1",
+    "onoff": "^3.1.0",
+    "serialport": "^6.2.0"
+  }
+}
