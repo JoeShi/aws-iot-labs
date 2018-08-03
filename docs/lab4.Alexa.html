@@ -1,0 +1,320 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Alexa与AWS IoT的集成 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="lab3.greengrass.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="lab1.IoTCore.1.html">
+            
+                <a href="lab1.IoTCore.1.html">
+            
+                    
+                    IoT Core实验1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="lab2.IoTCore.2.html">
+            
+                <a href="lab2.IoTCore.2.html">
+            
+                    
+                    IoT Core实验2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="lab3.greengrass.html">
+            
+                <a href="lab3.greengrass.html">
+            
+                    
+                    IoT Greengrass实验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="lab4.Alexa.html">
+            
+                <a href="lab4.Alexa.html">
+            
+                    
+                    Alexa与AWS IoT的集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Alexa与AWS IoT的集成</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="alexa&#x4E0E;aws-iot&#x7684;&#x96C6;&#x6210;">Alexa&#x4E0E;AWS IoT&#x7684;&#x96C6;&#x6210;</h1>
+<h2 id="&#x5B9E;&#x9A8C;&#x76EE;&#x7684;">&#x5B9E;&#x9A8C;&#x76EE;&#x7684;</h2>
+<p>&#x719F;&#x6089;Alexa Skill Set, &#x901A;&#x8FC7;Alexa&#x5BF9;&#x8BBE;&#x5907;&#x8FDB;&#x884C;&#x8BED;&#x97F3;&#x63A7;&#x5236;&#x3002;&#x5728;&#x5F00;&#x59CB;&#x672C;&#x5B9E;&#x9A8C;&#x524D;&#xFF0C;&#x8BF7;&#x5148;&#x6CE8;&#x518C;<a href="https://developer.amazon.com/" target="_blank">Amazon Developer</a>&#x8D26;&#x53F7;&#x3002;</p>
+<h2 id="&#x8BBE;&#x5907;">&#x8BBE;&#x5907;</h2>
+<ul>
+<li>Raspberry PI 3B+</li>
+<li>&#x5C0F;&#x98CE;&#x6247;&#xFF08;&#x53EF;&#x4EE5;&#x7528;LED&#x4EE3;&#x66FF;&#xFF09;</li>
+</ul>
+<h2 id="&#x8F6F;&#x4EF6;">&#x8F6F;&#x4EF6;</h2>
+<ul>
+<li>Serverless: &#x5FEB;&#x901F;&#x5F00;&#x53D1;&#xFF0C;&#x6D4B;&#x8BD5;&#xFF0C;&#x90E8;&#x7F72;Lambda</li>
+</ul>
+<p>&#x8BF7;&#x53C2;&#x8003;Serverless&#x6587;&#x6863;&#xFF0C;&#x5B89;&#x88C5;&#x5E76;&#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="&#x90E8;&#x7F72;&#x8BBE;&#x5907;&#x8F6F;&#x4EF6;">&#x90E8;&#x7F72;&#x8BBE;&#x5907;&#x8F6F;&#x4EF6;</h2>
+<p><a href="https://cdn.joeshi.im/blog/iot-serires-alexa-1/aws-smarthome-air-purifier.zip" target="_blank">&#x70B9;&#x51FB;&#x4E0B;&#x8F7D;&#x8BBE;&#x5907;&#x4EE3;&#x7801;</a></p>
+<p>&#x5C06;&#x4EE3;&#x7801;&#x62F7;&#x8D1D;&#x81F3;&#x6811;&#x8393;&#x6D3E;&#xFF0C;&#x5E76;&#x4FEE;&#x6539;<code>index.js</code> &#x4E2D;&#x7684;<code>ThingName</code>&#x53D8;&#x91CF;&#xFF0C;&#x5C06;&#x5176;&#x66FF;&#x6362;&#x4E3A;&#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x8BBE;&#x5907;&#xFF1B;&#x5C06;<code>host</code>&#x4E2D;&#x7684;url&#x66FF;&#x6362;&#x4E3A;&#x5408;&#x6CD5;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x8BE5;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x8BA2;&#x9605;Device Shadow&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x5E76;&#x4E14;&#x6839;&#x636E;&#x53D8;&#x5316;&#x6253;&#x5F00;&#x6216;&#x8005;&#x5173;&#x95ED;&#x5C0F;&#x98CE;&#x6247;&#x3002;</p>
+<h2 id="&#x521B;&#x5EFA;alexa-skill-set">&#x521B;&#x5EFA;Alexa Skill Set</h2>
+<ul>
+<li><p>&#x5728;<a href="https://developer.amazon.com/alexa/console/ask" target="_blank">ASK Console</a>&#x4E2D;&#x70B9;&#x51FB;[Create Still], &#x8F93;&#x5165;&#x6280;&#x80FD;&#x540D;&#x79F0;&#xFF0C;&#x9009;&#x62E9;Custom&#x5E76;&#x521B;&#x5EFA;&#x6280;&#x80FD;
+<img src="assets/lab4/alexa-skillset-custom.png" alt="Custom SkillSet"></p>
+</li>
+<li><p>&#x70B9;&#x51FB;[Add]&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Slot, &#x8F93;&#x5165;<code>status</code>, &#x5E76;&#x4E14;&#x5728;&#x521B;&#x5EFA;<code>on</code>&#x548C;<code>off</code>&#x4E24;&#x4E2A;slot value
+<img src="assets/lab4/alexa-slot.png" alt="SkillSet Slot"></p>
+</li>
+<li><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Intent, &#x6309;&#x4E0B;&#x56FE;&#x8F93;&#x5165;&#x7528;&#x4E8E;Intent&#x8BC6;&#x522B;&#x7684;&#x8BED;&#x53E5;, &#x5E76;&#x4E14;&#x9009;&#x62E9;&#x521A;&#x624D;&#x521B;&#x5EFA;slot
+<img src="assets/lab4/alexa-intent.png" alt="SkillSet Intent"></p>
+</li>
+</ul>
+<h2 id="&#x90E8;&#x7F72;lambda">&#x90E8;&#x7F72;Lambda</h2>
+<p><a href="https://cdn.joeshi.im/blog/iot-serires-alexa-1/aws-smarthome-alexa-skill.zip" target="_blank">&#x70B9;&#x51FB;&#x4E0B;&#x8F7D;Alexa SkillSet&#x4EE3;&#x7801;</a>&#xFF0C;&#x5E76;&#x4F7F;&#x7528;<code>Serverless</code>&#x8FDB;&#x884C;&#x5FEB;&#x901F;&#x90E8;&#x7F72;</p>
+<ul>
+<li>&#x6253;&#x5F00;Alexa SkillSet, &#x70B9;&#x51FB;&#x4FA7;&#x8FB9;&#x680F;&#x4E2D;&#x7684;[Endpoint]</li>
+<li>&#x627E;&#x5230;[Your Skill ID]&#xFF0C;&#x5E76;&#x590D;&#x5236;&#x81F3;&#x526A;&#x8D34;&#x677F;</li>
+<li>&#x6253;&#x5F00;<code>serverless.yml</code>&#xFF0C;&#x627E;&#x5230;alexaSkill&#x4E0B;&#x9762;&#x7684;<code>appID</code>, &#x5C06;&#x503C;&#x66FF;&#x6362;&#x6210;&#x6539;&#x6210;&#x590D;&#x5236;&#x7684;&#x5185;&#x5BB9;</li>
+<li>&#x5229;&#x7528;<code>serverless</code>&#x8FDB;&#x884C;&#x5FEB;&#x901F;&#x90E8;&#x7F72;<pre><code class="lang-shell">sls deploy --region us-west-2 // Oregon region
+</code></pre>
+</li>
+</ul>
+<h2 id="build-alexa-skillset">Build Alexa SkillSet</h2>
+<ul>
+<li>&#x5728;AWS Conole&#x4E2D;&#x627E;&#x5230;&#x521A;&#x624D;&#x53D1;&#x5E03;&#x7684;Lambda&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x590D;&#x5236;arn
+<img src="assets/lab4/lambda-arn.png" alt="Lambda ARN"></li>
+<li>&#x5728;Alexa Console&#x4E2D;&#x627E;&#x5230;&#x7F16;&#x8F91;Endpoint&#xFF0C;&#x5C06;&#x521A;&#x624D;&#x590D;&#x5236;&#x7684;arn&#x586B;&#x5165;[Default region]
+<img src="assets/lab4/alexa-endpoint.png" alt="Endpoint"></li>
+<li>&#x70B9;&#x51FB;[Save Endpoint]</li>
+<li>&#x9009;&#x62E9;[Invocation], &#x8F93;&#x5165;Invoke Name, &#x70B9;&#x51FB;[Save Model]&#xFF0C;&#x4FDD;&#x5B58;&#x6210;&#x529F;&#x540E;&#x70B9;&#x51FB;[Build Model]
+<img src="assets/lab4/alexa-build.png" alt="Build"></li>
+<li>&#x7B49;&#x5F85;&#x6570;&#x79D2;&#x540E;&#xFF0C;Model&#x7F16;&#x8BD1;&#x6210;&#x529F;</li>
+</ul>
+<h2 id="&#x6D4B;&#x8BD5;alexa-skillset">&#x6D4B;&#x8BD5;Alexa SkillSet</h2>
+<p>&#x6309;&#x7167;&#x4E0B;&#x56FE;&#xFF0C;&#x9009;&#x62E9;[Test], &#x6309;&#x4F4F;&#x8BDD;&#x7B52;&#xFF0C;&#x7528;&#x82F1;&#x6587;&#x5411;Alexa&#x53D1;&#x9001;&#x6307;&#x4EE4;&#xFF0C;&#x4F8B;&#x5982; <strong>ask Puppy to turn on the air purifier</strong></p>
+<p><img src="assets/lab4/alexa-test.png" alt="Test"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="lab3.greengrass.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: IoT Greengrass实验">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Alexa与AWS IoT的集成","level":"1.5","depth":1,"previous":{"title":"IoT Greengrass实验","level":"1.4","depth":1,"path":"docs/lab3.greengrass.md","ref":"docs/lab3.greengrass.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"docs/lab4.Alexa.md","mtime":"2018-08-03T17:05:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-03T17:06:44.018Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
