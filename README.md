@@ -1,9 +1,31 @@
 ## 简介
 该系列实验旨帮助用户快速上手AWS IoT
 
+
+**文件结构**
+```
+README.md      ---- 简介
+SUMMARY.md     ---- 目录
+docs           ---- 文档
+examples       ---- 代码
+```
+
+**Tasks**
+
+- [x] IoT Core 基础通讯实验
+- [x] IoT Core Shadow实验
+- [ ] IoT Greengrass实验
+- [ ] Alexa与IoT Core集成实验
+- [ ] Alexa与Cognito User Pool实现Account Linking
+- [ ] Alexa Smart Home动手实验
+- [ ] IoT Analytics实验
+- [ ] AI@Greengrass动手实验
+- [ ] IoT 批量设备管理动手实验
+- [ ] IoT 与Cognito集成实验
+
 ## 动手实验
 
-### 1. IoT Core 实验1
+### [1. IoT Core 实验1](docs/lab1.IoTCore.1.md)
 实验目的：熟悉使用IoT Core组件，设备接入，消息分发，设备认证
 
 AWS组件：
@@ -17,7 +39,7 @@ AWS组件：
 * CA, Role Aliases, Authorizer
 * JITP, JITP, CVM
 
-### 2. IoT Core 实验2
+### [2. IoT Core 实验2](docs/lab2.IoTCore.2.md)
 实验目的：熟悉IoT Core Rule Engine, 将数据导入到DynamoDB
 
 AWS组件：
@@ -30,7 +52,7 @@ AWS组件：
 * 如何进行自定义的身份认证(Custom Authorizer)
 * LTW
 
-### [3. IoT Greengrass实验](lab3.greengrass.md)
+### [3. IoT Greengrass实验](docs/lab3.greengrass.md)
 实验目的：熟悉Greengrass在智能家居中的网关作用, Local Message Routing
 
 AWS组件：
@@ -41,7 +63,7 @@ AWS组件：
 * 如何进行合理的权限设计
 * 如何进行设备分享
 
-### [4. Alexa与AWS IoT的集成](lab4.Alexa.md)
+### [4. Alexa与AWS IoT的集成](docs/lab4.Alexa.md)
 实验目的：通过Alexa 对智能灯泡，空气净化器进行语音控制
 
 AWS组件：
