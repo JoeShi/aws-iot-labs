@@ -1,5 +1,8 @@
 ## 简介
-该系列实验旨帮助用户快速上手AWS IoT
+该系列实验旨帮助用户快速上手AWS IoT, Alexa, 数据分析.
+
+[完整文档](https://chinalabs.github.io/aws-iot-labs/)内包含若干个IoT, 
+Alexa, 数据分析的动手实验.
 
 
 **文件结构**
