@@ -1,0 +1,43 @@
+version: 0.2
+
+env:
+  parameter-store:
+    GITHUB_TOKEN: "GITHUB_TOKEN"
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - echo $CODEBUILD_SOURCE_VERSION
+      - echo build for release
+      - npm install gitbook-cli -g
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - gitbook install
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - gitbook build
+      - git checkout gh-pages
+      - git pull origin gh-pages --rebase
+      - cp -R _book/* .
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+      - git clean -fx node_modules
+      - git clean -fx _book
+      - git add .
+      - git remote rm origin
+      - git remote add origin https://joeshi:$GITHUB_TOKEN@github.com/chinalabs/aws-iot-labs.git
+      - git config --global user.email "hellojoeshi@gmail.com"
+      - git config --global user.name "Joe SHI"
+      - git commit -a -m "Update docs"
+      - git push --set-upstream origin gh-pages
+      - echo gh-pages updated
+artifacts:
+  files:
+    - _book/**/*
+  discard-paths: yes

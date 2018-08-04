@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - echo $CODEBUILD_SOURCE_VERSION
+      - echo build for pull request preview
+      - npm install gitbook-cli -g
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - gitbook install
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - gitbook build
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+      - aws s3 rm s3://chinalabs-preview/aws-iot-labs/$CODEBUILD_SOURCE_VERSION/ --recursive
+      - aws s3 sync _book/ s3://chinalabs-preview/aws-iot-labs/$CODEBUILD_SOURCE_VERSION/ --exclude ".git/*"
+      - echo upload to stage successfully.
+artifacts:
+  files:
+    - _book/**/*
+  discard-paths: yes
