@@ -4,6 +4,8 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
+      - echo $CODEBUILD_SOURCE_VERSION
+      - echo build for pull request preview
       - npm install gitbook-cli -g
   pre_build:
     commands:
@@ -18,8 +20,9 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      - aws s3 sync _book/ s3://im-joeshi-aws/iot/ --delete --exclude ".git/*"
-      - aws cloudfront create-invalidation --distribution-id E2D6JGIECXYGAG --path /iot/*
+      - aws s3 rm s3://chinalabs-preview/aws-iot-labs/$CODEBUILD_SOURCE_VERSION/ --recursive
+      - aws s3 sync _book/ s3://chinalabs-preview/aws-iot-labs/$CODEBUILD_SOURCE_VERSION/ --exclude ".git/*"
+      - echo upload to stage successfully.
 artifacts:
   files:
     - _book/**/*
