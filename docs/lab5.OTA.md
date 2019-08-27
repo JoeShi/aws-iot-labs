@@ -140,6 +140,9 @@ $ aws iot attach-policy \
     
 # 激活证书
 $ aws iot update-certificate --certificate-id 661bdfb4f083bf58607ac1a54904162e0f91f542e9969b58ee10136ded565925 --new-status ACTIVE
+
+# Attach thing 到证书，其中 --principal 是证书的 Arn
+$ aws iot attach-thing-principal --thing-name aws-iot-device-sdk-js --principal arn:aws-cn:iot:cn-north-1:408221054609:cert/661bdfb4f083bf58607ac1a54904162e0f91f542e9969b58ee10136ded565925
 ```
 
 
