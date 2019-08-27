@@ -2,7 +2,7 @@
 
 使用具有 admin 权限的用户登陆
 
-启动一台 Amazon Linux EC2 实例 (**Amazon Linux AMI 2018.03.0 (HVM)**)作为模拟的IoT设备。
+启动一台 Amazon Linux EC2 实例作为模拟的IoT设备，由于后面安装rpm包有依赖关系，这里要确保使用的是Amazon Linux AMI 2018.03.0 (HVM)。另外为了保证网络畅通，Security Group建议开放全部的IP和端口。
 
 在 EC2 实例上使用 AWS Configure 命令配置好默认 Region 为 cn-north-1。
 
@@ -34,13 +34,7 @@
 $ sudo yum install git
 ```
 
-2. 安装 AWS IoT Device SDK - Javascript
-
-```shell
-$ git clone https://github.com/aws/aws-iot-device-sdk-js.git
-```
-
-3. 安装 node.js
+2. 安装 node.js
 
 ```shell
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -48,10 +42,18 @@ $ . ~/.nvm/nvm.sh
 $ nvm install node
 ```
 
+3. 安装 AWS IoT Device SDK - Javascript
+
+```shell
+$ git clone https://github.com/aws/aws-iot-device-sdk-js.git
+$ cd aws-iot-device-sdk-js
+$ npm install
+```
+
 4. 下载两个不同版本的 telnet 程序包，后续模拟固件升级时使用
 
 ```shell
-$ cd aws-iot-device-sdk-js/examples/
+$ cd ~/aws-iot-device-sdk-js/examples/
 $ wget https://www.rpmfind.net/linux/centos/6.10/os/x86_64/Packages/telnet-0.17-48.el6.x86_64.rpm
 $ wget https://www.rpmfind.net/linux/centos/7.6.1810/os/x86_64/Packages/telnet-0.17-64.el7.x86_64.rpm
 ```
@@ -161,17 +163,17 @@ $ pwd
 # 编写一个jobs文档，复制以下JSON格式文档并保存为 jobs-document.json 文件
 $ vi jobs-document.json
 {
-  "operation": "install",  # 定义操作为 install
-  "packageName": "new-firmware", # packageName自定义
-  "workingDirectory": "../examples", # 定义当前工作目录为/home/ec2-user/aws-iot-device-sdk-js/examples
-  "launchCommand": "sudo rpm -Uvh new-firmware.rpm", # 定义升级固件的命令
+  "operation": "install",
+  "packageName": "new-firmware",
+  "workingDirectory": "../examples",
+  "launchCommand": "sudo rpm -Uvh new-firmware.rpm",
   "autoStart": "true",
   "files": [
     {
-      "fileName": "new-firmware.rpm", # 从S3上获取到的固件会被重命名为自定义的名字
-      "fileVersion": "1.0", # fileVersion自定义
+      "fileName": "new-firmware.rpm",
+      "fileVersion": "1.0",
       "fileSource": {
-        "url": "${aws:iot:s3-presigned-url:https://bucket-name.s3.cn-north-1.amazonaws.com.cn/telnet-0.17-64.el7.x86_64.rpm}" # AWS IoT 会生成预签名 URL 并使用预签名 URL 替换占位符 URL
+        "url": "${aws:iot:s3-presigned-url:https://bucket-name.s3.cn-north-1.amazonaws.com.cn/telnet-0.17-64.el7.x86_64.rpm}"
       }
     }
   ]
