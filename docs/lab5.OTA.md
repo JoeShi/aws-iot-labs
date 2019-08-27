@@ -62,7 +62,7 @@ $ wget https://www.rpmfind.net/linux/centos/7.6.1810/os/x86_64/Packages/telnet-0
 $ sudo rpm -ivh telnet-0.17-48.el6.x86_64.rpm 
 ```
 
-6. 创建一个 S3 bucket，并上传新版本的 telnet 程序, 
+6. 创建一个 S3 bucket，并上传新版本的 telnet 程序
 
 ```shell
 $ aws s3 mb s3://bucket-name # 桶名请替换成自己定义的名称
@@ -100,6 +100,9 @@ $ aws iot create-keys-and-certificate \
 ```
 
 ```json
+#从上一步的命令输出中记录下自己的证书Arn, 后面的命令中会用到
+#example: 
+
 "certificateArn": "arn:aws-cn:iot:cn-north-1:408221054609:cert/661bdfb4f083bf58607ac1a54904162e0f91f542e9969b58ee10136ded565925"
 ```
 
@@ -110,7 +113,7 @@ $ cd ..
 $ pwd
 /home/ec2-user/aws-iot-device-sdk-js/examples
 
-# 编写一个 policy 文档
+# 编写一个 policy 文档，复制以下JSON格式的策略并保存为 iot-policy.json 文件
 $ vi iot-policy.json  
 {
   "Version": "2012-10-17",
@@ -133,15 +136,15 @@ $ vi iot-policy.json
 # 创建 iot policy
 $ aws iot create-policy --policy-name ota-policy --policy-document file://iot-policy.json 
 
-# 挂载 policy 到之前创建的 IoT 设备证书上
+# 挂载 policy 到之前创建的 IoT 设备证书上，注意这里的 --target 替换成自己的证书Arn
 $ aws iot attach-policy \
     --policy-name ota-policy \
     --target "arn:aws-cn:iot:cn-north-1:408221054609:cert/661bdfb4f083bf58607ac1a54904162e0f91f542e9969b58ee10136ded565925"
     
-# 激活证书
+# 激活证书，注意 --certificate-id 替换成自己证书的id
 $ aws iot update-certificate --certificate-id 661bdfb4f083bf58607ac1a54904162e0f91f542e9969b58ee10136ded565925 --new-status ACTIVE
 
-# Attach thing 到证书，其中 --principal 是证书的 Arn
+# Attach thing 到证书，其中 --principal 是自己证书的 Arn
 $ aws iot attach-thing-principal --thing-name aws-iot-device-sdk-js --principal arn:aws-cn:iot:cn-north-1:408221054609:cert/661bdfb4f083bf58607ac1a54904162e0f91f542e9969b58ee10136ded565925
 ```
 
@@ -154,6 +157,8 @@ $ aws iot attach-thing-principal --thing-name aws-iot-device-sdk-js --principal 
 ```shell
 $ pwd
 /home/ec2-user/aws-iot-device-sdk-js/examples
+
+# 编写一个jobs文档，复制以下JSON格式文档并保存为 jobs-document.json 文件
 $ vi jobs-document.json
 {
   "operation": "install",  # 定义操作为 install
@@ -186,7 +191,7 @@ $ aws s3 cp jobs-document.json s3://bucket-name
 3. 当 IoT 设备请求 IoT Jobs 文档时，AWS IoT 会生成预签名 URL 并使用预签名 URL 替换占位符 URL。然后将 IoT Jobs 文档发送到设备，设备会通过这个预签名 URL取得访问 S3 bucket 中固件的权限。在创建使用预签名 Amazon S3 URL 的 Job 时，您必须提供一个 IAM 角色，该角色可授予从存储数据或更新的 Amazon S3 存储桶中下载文件的权限。该角色还必须向 AWS IoT 授予 assumeRole 的权限。
 
 ```shell
-# 编写一个 assumeRole 的 policy 文档
+# 编写一个 assumeRole 的 policy 文档，复制以下JSON格式的策略并保存为 trust-policy.json 文件
 $ vi trust-policy.json 
 {
   "Version": "2012-10-17",
@@ -235,7 +240,7 @@ $ aws iam create-role --role-name iot-access-s3 --assume-role-policy-document fi
 ```
 
 ```shell
-# 编写一个从 S3 存储桶下载文件的 policy 文档
+# 编写一个从 S3 存储桶下载文件的 policy 文档，制以下JSON格式的策略并保存为 s3-policy.json 文件
 $ vi s3-policy.json
 {
     "Version": "2012-10-17",
@@ -340,7 +345,6 @@ telnet-0.17-48.el6.x86_64
 
 ```shell
 $ cd /home/ec2-user/aws-iot-device-sdk-js/examples
-
 
 $ aws iot create-job --job-id 1 --targets arn:aws-cn:iot:cn-north-1:408221054609:thing/aws-iot-device-sdk-js --document-source https://bucket-name.s3.cn-north-1.amazonaws.com.cn/jobs-document.json --presigned-url-config "{\"roleArn\":\"arn:aws-cn:iam::408221054609:role/iot-access-s3\", \"expiresInSec\":3600}" --target-selection SNAPSHOT
 {
