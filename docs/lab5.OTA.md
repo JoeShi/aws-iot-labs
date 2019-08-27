@@ -289,9 +289,9 @@ $ pwd
 /home/ec2-user/aws-iot-device-sdk-js/examples
 
 # 查看自己的 AWS IoT Endpoint
-$ aws iot describe-endpoint 
+$ aws iot describe-endpoint --endpoint-type iot:Data-ATS
 {
-    "endpointAddress": "a1hk0pcc0rk07l.iot.cn-north-1.amazonaws.com.cn"
+    "endpointAddress": "a1hk0pcc0rk07l.ats.iot.cn-north-1.amazonaws.com.cn"
 }
 
 # 运行客户端程序 jobs-agent.js，并等待jobs的提交
@@ -348,6 +348,7 @@ telnet-0.17-48.el6.x86_64
 ```shell
 $ cd /home/ec2-user/aws-iot-device-sdk-js/examples
 
+#注意这里的 --targets, bucket-name 和 roleArn 要替换成自己的
 $ aws iot create-job --job-id 1 --targets arn:aws-cn:iot:cn-north-1:408221054609:thing/aws-iot-device-sdk-js --document-source https://bucket-name.s3.cn-north-1.amazonaws.com.cn/jobs-document.json --presigned-url-config "{\"roleArn\":\"arn:aws-cn:iam::408221054609:role/iot-access-s3\", \"expiresInSec\":3600}" --target-selection SNAPSHOT
 {
     "jobArn": "arn:aws-cn:iot:cn-north-1:408221054609:job/1", 
